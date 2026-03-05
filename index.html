@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VNDYNE Trading Collection</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>VNDYNE Bootleg Trading Archive</h1>
+<p class="subtitle">Search • Filter • Trade</p>
+</header>
+
+<section class="stats">
+<div class="stat">
+<h2 id="totalCount">0</h2>
+<p>Total Boots</p>
+</div>
+
+<div class="stat">
+<h2 id="videoCount">0</h2>
+<p>Videos</p>
+</div>
+
+<div class="stat">
+<h2 id="audioCount">0</h2>
+<p>Audios</p>
+</div>
+</section>
+
+<section class="controls">
+
+<input type="text" id="search" placeholder="Search show, city, venue...">
+
+<select id="typeFilter">
+<option value="">All Types</option>
+<option value="Video">Video</option>
+<option value="Audio">Audio</option>
+</select>
+
+<select id="sort">
+<option value="">Sort</option>
+<option value="show">Show Name</option>
+<option value="date">Date</option>
+<option value="city">City</option>
+</select>
+
+</section>
+
+<table id="collectionTable">
+
+<thead>
+<tr>
+<th>Type</th>
+<th>Show</th>
+<th>Date</th>
+<th>City</th>
+<th>Venue</th>
+<th>Format</th>
+<th>Link</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+<footer>
+<p>Trading Site powered by GitHub Pages</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
