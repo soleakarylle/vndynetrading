@@ -47,7 +47,6 @@ row.innerHTML=`
 <td>${item["Tour"]||""}</td>
 <td>${item["Cast"]||""}</td>
 <td>${item["Format"]||""}</td>
-<td>${link}</td>
 `
 
 tbody.appendChild(row)
