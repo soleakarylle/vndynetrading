@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>VNDYNE Trading Archive</title>
+<title>Audio Collection</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,7 +17,7 @@
 <nav>
 <a href="index.html">Home</a>
 <a href="videos.html">Videos</a>
-<a href="audios.html">Audios</a>
+<a href="audios.html"><b>Audios</b></a>
 </nav>
 
 <div class="container">
@@ -86,7 +86,7 @@ fetch("collection.json").then(r=>r.json()).then(json=>{
 data=json
 populateShows()
 updateStats()
-render(data)
+render(data.filter(x=>x['Audio / Video']==='Audio'))
 })
 </script>
 

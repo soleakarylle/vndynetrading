@@ -1,5 +1,5 @@
 
-let data = []
+let data=[]
 
 fetch("collection.json")
 .then(r=>r.json())
@@ -7,7 +7,10 @@ fetch("collection.json")
 
 data=json
 
+if(document.getElementById("totalCount")){
 updateStats()
+}
+
 render(data)
 
 })
@@ -27,13 +30,15 @@ document.getElementById("audioCount").innerText=audio
 function render(list){
 
 const tbody=document.querySelector("#collectionTable tbody")
+if(!tbody) return
+
 tbody.innerHTML=""
 
 list.forEach(item=>{
 
-let row=document.createElement("tr")
-
 let link=item["Link"]?`<a href="${item["Link"]}" target="_blank">Open</a>`:""
+
+let row=document.createElement("tr")
 
 row.innerHTML=`
 <td>${item["Audio / Video"]||""}</td>
@@ -51,15 +56,11 @@ tbody.appendChild(row)
 
 }
 
-document.getElementById("search").addEventListener("input",apply)
-document.getElementById("typeFilter").addEventListener("change",apply)
-document.getElementById("sort").addEventListener("change",apply)
-
 function apply(){
 
 let search=document.getElementById("search").value.toLowerCase()
 let type=document.getElementById("typeFilter").value
-let sort=document.getElementById("sort").value
+let show=document.getElementById("showFilter").value
 
 let filtered=data.filter(item=>{
 
@@ -71,23 +72,30 @@ let text=(
 
 let matchSearch=text.includes(search)
 let matchType=!type||item["Audio / Video"]===type
+let matchShow=!show||item["Show"]===show
 
-return matchSearch&&matchType
+return matchSearch&&matchType&&matchShow
 
 })
 
-if(sort==="show"){
-filtered.sort((a,b)=>(a["Show"]||"").localeCompare(b["Show"]||""))
-}
-
-if(sort==="city"){
-filtered.sort((a,b)=>(a["City"]||"").localeCompare(b["City"]||""))
-}
-
-if(sort==="date"){
-filtered.sort((a,b)=>(a["Date"]||"").localeCompare(b["Date"]||""))
-}
-
 render(filtered)
+
+}
+
+function populateShows(){
+
+let select=document.getElementById("showFilter")
+if(!select) return
+
+let shows=[...new Set(data.map(x=>x["Show"]))].sort()
+
+shows.forEach(show=>{
+
+let opt=document.createElement("option")
+opt.value=show
+opt.textContent=show
+select.appendChild(opt)
+
+})
 
 }
