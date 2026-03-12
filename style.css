@@ -13,6 +13,11 @@ text-align:center;
 border-bottom:1px solid #333;
 }
 
+h1, h2, h3 {
+    text-align: center;
+    letter-spacing: 1px;
+}
+
 nav{
 display:flex;
 justify-content:center;
@@ -81,6 +86,14 @@ background:#151515;
 padding:15px 25px;
 border-radius:8px;
 text-align:center;
+}
+
+.home-box {
+    background: #1a1a1f;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #c9a227;
+    margin: 20px 0;
 }
 
 footer{
